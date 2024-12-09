@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Merriweather:ital,wght@0,300;0,400;0,700;0,900;1,300;1,400;1,700;1,900&display=swap"
+        rel="stylesheet">
+    <title>Mê Cung Game AI</title>
+    <style>
+        :root {
+            --row: 1;
+            --column: 1;
+        }
+
+        * {
+            font-family: "Merriweather", serif;
+            font-weight: 400;
+            font-style: normal;
+        }
+
+        .container {
+            display: grid;
+            grid-template-columns: repeat(var(--column), 50px);
+            /* 4 cột, mỗi cột 50px */
+            grid-template-rows: repeat(var(--row), 50px);
+            /* 3 hàng, mỗi hàng 50px */
+            gap: 0;
+            /* Không có khoảng cách giữa các phần tử */
+        }
+
+        .item {
+            background-color: #F1EFDC;
+            border: 1px solid black;
+            box-sizing: border-box;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .wall {
+            background-color: #a55300;
+            border: 1px solid black;
+            box-sizing: border-box;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .start {
+            /* background-color: #00ffb3; */
+            background-image: url("nam.png");
+            background-size: cover;
+            border: 1px solid #603F26;
+            box-sizing: border-box;
+        }
+
+        .end {
+            /* background-color: #F5004F; */
+            background-image: url("nu.png");
+            background-size: cover;
+            border: 1px solid #603F26;
+            box-sizing: border-box;
+
+        }
+
+        .path {
+            background-color: #ffbb32;
+        }
+
+        .highlight {
+            border: 2px solid red;
+        }
+
+        h2 {
+            color: darkblue;
+        }
+
+        #info {
+            font-size: 20px;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="container_1">
+        <form action="#" method="post" id="settings-form">
+            <label for="row">Số Hàng:</label>
+            <input type="text" id="row" name="row" placeholder="Nhập vào số hàng">
+            <label for="column">Số Cột:</label>
+            <input type="text" id="column" name="column" placeholder="Nhập vào số cột">
+            <input type="submit" value="Submit">
+        </form>
+        <button id="find-path-button">Tìm đường đi</button>
+        <button id="myButton">Next</button>
+    </div>
+
+
+
+    <!-- 
+    <script>
+        document.getElementById('settings-form').addEventListener('submit', function (event) {
+            event.preventDefault();
+
+            var rowValue = document.getElementById('row').value;
+            var columnValue = document.getElementById('column').value;
+
+            document.documentElement.style.setProperty('--row', rowValue);
+            document.documentElement.style.setProperty('--column', columnValue);
+
+            var container = document.getElementById('container');
+            container.innerHTML = ''; // Xóa nội dung hiện tại của container
+
+            var totalItems = rowValue * columnValue;
+            for (var i = 0; i < totalItems; i++) {
+                var item = document.createElement('div');
+                item.className = 'item';
+                container.appendChild(item);
+            }
+
+        });
+    </script> -->
+
+    <div class="container" id="container"></div>
+    <div id="info">
+        <p>Số lượng ô đã đi qua: <span id="closed-count">0</span></p>
+        <p>Số lượng ô của đường đi: <span id="path-count">0</span></p>
+        <p>Số lượng ô tường xóa để tạo ngẫu nhiên: <span id="wall-remove-count">0</span></p>
+        <p>Số lượng ô tường tổng: <span id="wall-count">0</span></p>
+    </div>
+
+
+</body>
+<script src="script_DFSRandom copy.js"></script>
+
+</html>
